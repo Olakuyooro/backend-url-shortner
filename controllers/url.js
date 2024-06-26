@@ -5,7 +5,7 @@ exports.shortenUrl = async (req, res, next) => {
   try {
     const originalUrl = req.body.originalUrl;
    
-    const shortUrl = tiny(originalUrl)
+    const shortUrl = tiny.shorten(originalUrl)
 
     const url = new Url({
       originalUrl: originalUrl,
