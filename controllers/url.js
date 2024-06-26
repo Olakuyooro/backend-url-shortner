@@ -1,10 +1,11 @@
 const Url = require("../models/url-data");
+const tiny = require("turl")
 
 exports.shortenUrl = async (req, res, next) => {
   try {
     const originalUrl = req.body.originalUrl;
-    const { nanoid } = await import("nanoid");
-    const shortUrl = nanoid(10); 
+   
+    const shortUrl = tiny(originalUrl)
 
     const url = new Url({
       originalUrl: originalUrl,
