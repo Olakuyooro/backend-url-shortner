@@ -1,11 +1,12 @@
 const Url = require("../models/url-data");
 const tiny = require("turl")
+const axios = require('axios')
 
 exports.shortenUrl = async (req, res, next) => {
   try {
     const originalUrl = req.body.originalUrl;
-   
-    const shortUrl = tiny.shorten(originalUrl)
+    const response = await axios.get(`http://tinyurl.com/api-create.php?url=${originalUrl}`);
+    const shortUrl = (response.data)
 
     const url = new Url({
       originalUrl: originalUrl,
